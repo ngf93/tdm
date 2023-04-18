@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+    --h-height: 173px;
+    --f-height: 80px;
+    // @include media-breakpoint-down(md) {
+    //   --h-height: 70px;
+    // }
+    // @include media-breakpoint-down(sm) {
+    //   --h-height: 55px;
+    //   --f-height: 64px;
+    // }
+}
+
+$accent-color: #E86D00;
+$bg-color: #262626;
+$font-color: #ffffff;
+$radius: .5em;
+$transition: 300ms ease-in-out;
+
+/* mixins */
+@mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $x;
+    align-items: $y;
+    flex-wrap: $wrap;
+}
+@mixin no-appearance {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    outline: none;
+}
+@mixin safariFix {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    isolation: isolate;
+    transform: translateZ(0);
+}
+@mixin absBG($z: 1) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: $z;
+}
+@mixin clamp($count, $line, $strict: false) {
+    display: -webkit-box;
+    -webkit-line-clamp: $count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: $line;
+    @if $strict {
+       height: $line * $count;
+    } @else {
+       max-height: $line * $count;
+    }
+}
+@mixin list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+
+/* Typography */
+a, a:hover, a:focus, a:active {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, select, input, textarea, button, div, blockquote, cite, figure, figcaption, table, ul, ol, dl, li, address {
+    line-height: 140%;
+    margin-bottom: 0px;
+}
+.fs {
+    &-08 {font-size: 0.8em;}
+    &-09 {font-size: 0.9em;}
+    &-10 {font-size: 1em;}
+    &-11 {font-size: 1.1em;}
+    &-12 {font-size: 1.2em;}
+    &-13 {font-size: 1.3em;}
+    &-14 {font-size: 1.4em;}
+    &-15 {font-size: 1.5em;}
+    &-16 {font-size: 1.6em;}
+    &-17 {font-size: 1.7em;}
+    &-18 {font-size: 1.8em;}
+    &-19 {font-size: 1.9em;}
+    &-20 {font-size: 2em;}
+    &-25 {font-size: 2.5em;}
+    &-30 {font-size: 3em;}
+    &-35 {font-size: 3.5em;}
+    &-40 {font-size: 4em;}
+}
+.fw {
+    &-3 {font-weight: 300;}
+    &-4 {font-weight: 400;}
+    &-5 {font-weight: 500;}
+    &-6 {font-weight: 600;}
+    &-7 {font-weight: 700;}
+    &-8 {font-weight: 800;}
+    &-9 {font-weight: 900;}
+}
+
+button {
+    background: none;
+    border: none;
+    padding: unset;
+    display: block;
+    font-family: inherit;
+    outline: none;
+    color: inherit;
+}
+.btn {
+    @include flex(row, center, center, nowrap);
+    padding: .65em 1.65em;
+    text-align: center;
+    transition: $transition;
+    width: fit-content;
+    font-weight: 400;
+    border-radius: $radius;
+    &-1 {
+        @extend .btn;
+        color: $font-color;
+        background: $accent-color;
+        border: 1px solid $accent-color;
+        &:hover, &:focus {
+            color: $font-color;
+            background: $accent-color;
+            border: 1px solid $font-color;
+            box-shadow: inset 0px 0px 32.624px rgba($color: $font-color, $alpha: .34);
+        }
+        // &:active, &.active {
+        // color: $white !important;
+        // background: $gradient-1;
+        // }
+    }
+}
+
+
+body {
+    background-color: #262626;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Montserrat';
+}
+
+
+header {
+    height: var(--h-height);
+    .top {
+        @include flex(row, space-between, center, nowrap);
+    }
+    nav {
+        height: 50px;
+        background-color: $accent-color;
+        .container {
+            @include list();
+            @include flex();
+            height: 100%;
+        }
+    }
+}
+
+
+main {
+    min-height: calc(100vh - var(--h-height) - var(--f-height));
+}
+
+.sec-1 {
+    height: 860px;
+}
+
+// footer {
+
+// }
