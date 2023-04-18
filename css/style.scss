@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --h-height: 173px;
+    --top: 123px;
+    --nav: 50px;
     --f-height: 80px;
     // @include media-breakpoint-down(md) {
     //   --h-height: 70px;
@@ -13,10 +14,13 @@
 }
 
 $accent-color: #E86D00;
+$accent-dark: #B25400;
 $bg-color: #262626;
 $font-color: #ffffff;
 $radius: .5em;
 $transition: 300ms ease-in-out;
+$font-1: 'Montserrat';
+$font-2: 'SF Pro Text';
 
 /* mixins */
 @mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
@@ -63,7 +67,17 @@ $transition: 300ms ease-in-out;
     list-style: none;
     padding-left: 0px;
 }
-
+@mixin placeholder($color, $fw: 400){
+    &:-moz-placeholder, &::-moz-placeholder,
+    &::-webkit-input-placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder {
+        color: $color;
+        font-weight: $fw;
+    }
+    &::placeholder {
+        color: $color;
+        font-weight: $fw;
+    }
+}
 
 /* Typography */
 a, a:hover, a:focus, a:active {
@@ -73,8 +87,21 @@ a, a:hover, a:focus, a:active {
     cursor: pointer;
 }
 h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, select, input, textarea, button, div, blockquote, cite, figure, figcaption, table, ul, ol, dl, li, address {
-    line-height: 140%;
+    line-height: 120%;
     margin-bottom: 0px;
+}
+
+h1 {
+    font-family: $font-1;
+    font-weight: 700;
+    font-size: 5.4em;
+    text-align: left;
+}
+h4 {
+    font-family: $font-1;
+    font-size: 2.7em;
+    font-weight: 500;
+    text-align: left;
 }
 .fs {
     &-08 {font-size: 0.8em;}
@@ -105,6 +132,43 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
     &-9 {font-weight: 900;}
 }
 
+/* Form elements */
+input, textarea {
+    background-color: transparent;
+    border: 1px solid pink;
+    padding: 0.5em 1em;
+    width: 100%;
+    outline: none;
+    display: block;
+    transition: $transition;
+    @include placeholder(#757575, 700);
+}
+label {
+    @include flex(row, flex-start, center, nowrap);
+    span {flex:1;}
+}
+select {
+    @include no-appearance();
+    background-color: transparent;
+    color: $font-color;
+    cursor: pointer;
+    min-width: 120px;
+    padding: 0.75em 1.65em;
+    border: 1px solid pink;
+    // background: url(imgs/chevron-down.svg), $glass;
+    // background-repeat: no-repeat;
+    // background-position: calc(100% - 0.67em) 50%, 50% 50%;
+    // background-size: 1.6em, cover;
+    transition: $transition;
+    // &:hover, &:focus {
+    //   background-color: rgba($pale-blue, .1);
+    // }
+    option {
+        @include no-appearance();
+        background-color: $bg-color;
+        color: $font-color;
+    }
+}
 button {
     background: none;
     border: none;
@@ -142,36 +206,118 @@ button {
 
 
 body {
-    background-color: #262626;
-    color: #fff;
+    background-color: $bg-color;
+    color: $font-color;
     font-size: 14px;
-    font-family: 'Montserrat';
+    font-family: $font-1;
 }
 
-
 header {
-    height: var(--h-height);
+    font-family: $font-2;
     .top {
+        height: var(--top);
         @include flex(row, space-between, center, nowrap);
+        form {
+            @include flex();
+            border: 2px solid #EDEDED;
+            border-radius: $radius;
+            padding: 5px 15px;
+            input, select {
+                border: none;
+                padding: .5em 0;
+                font-weight: 700;
+            }
+            input {
+                min-width: 380px;
+                font-weight: 700;
+            }
+            hr {
+                height: 20px;
+                width: 1px;
+                background-color: #EDEDED;
+                border: none;
+                margin: 0px 15px;
+                opacity: 1;
+            }
+            button {
+                @include flex();
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+        ul {
+            @include flex();
+            li {
+                &:not(:first-child){border-left: 1px solid #EBF8FF;}
+                a {
+                    @include flex();
+                    height: 20px;
+                    padding: 0 15px;
+                    img {
+                        width: 16px;
+                        height: 16px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        .icon {
+            width: 1em;
+            height: 1em;
+        }
+        .social {
+            width: 1.5em;
+            height: 1.5em;
+        }
     }
     nav {
-        height: 50px;
+        height: var(--nav);
         background-color: $accent-color;
         .container {
             @include list();
             @include flex();
             height: 100%;
+            li {
+                height: 100%;
+                flex-grow: 1;
+                text-align: center;
+                a {
+                    height: 100%;
+                    @include flex();
+                    font-weight: 700;
+                    background-color: transparent;
+                    transition: $transition;
+                    &:hover, &:focus, &:active {
+                        background-color: $accent-dark;
+                    }
+                    &.main-link {
+                        background-color: $accent-dark;
+                        img {
+                            width: 18px;
+                            height: 12px;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 
 main {
-    min-height: calc(100vh - var(--h-height) - var(--f-height));
+    min-height: calc(100vh - var(--top) - var(--nav) - var(--f-height));
 }
 
 .sec-1 {
     height: 860px;
+    position: relative;
+    background-color: rgba($color: #000000, $alpha: .58);
+    &-bg {
+        @include absBG(-1);
+    }
 }
 
 // footer {
