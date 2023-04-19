@@ -3,7 +3,7 @@
 :root {
     --top: 123px;
     --nav: 50px;
-    --f-height: 290px;
+    --f-height: 330px;
     // @include media-breakpoint-down(md) {
     //   --h-height: 70px;
     // }
@@ -17,6 +17,7 @@ $accent-color: #E86D00;
 $accent-dark: #B25400;
 $bg-color: #262626;
 $font-color: #ffffff;
+$gray: #C2C2C2;
 $radius: 5px;
 $transition: 300ms ease-in-out;
 $font-1: 'Montserrat';
@@ -133,6 +134,17 @@ h4 {
     font-weight: 500;
     text-align: left;
 }
+h5 {
+    font-family: $font-1;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+h6 {
+    font-family: $font-2;
+    font-size: 1em;
+    font-weight: 700;
+}
 .fs {
     &-08 {font-size: 0.8em;}
     &-09 {font-size: 0.9em;}
@@ -161,17 +173,20 @@ h4 {
     &-8 {font-weight: 800;}
     &-9 {font-weight: 900;}
 }
+.gray {color: $gray;}
+.accent {color: $accent-color;}
+.white {color: white;}
 
 /* Form elements */
 input, textarea {
     background-color: transparent;
-    border: 1px solid pink;
-    padding: 0.5em 1em;
+    border: 1px solid $font-color;
+    padding: 0.75em 1em;
     width: 100%;
     outline: none;
     display: block;
     transition: $transition;
-    @include placeholder(#757575, 700);
+    @include placeholder(#757575, 400);
 }
 label {
     @include flex(row, flex-start, center, nowrap);
@@ -199,6 +214,44 @@ select {
         color: $font-color;
     }
 }
+.count-group {
+    @include flex(row, center, stretch, nowrap);
+    border: 1px solid #E0E0E0;
+    border-radius: $radius;
+    width: fit-content;
+    input {
+        padding: 0px;
+        width: 40px;
+        color: #333333;
+        text-align: center;
+        font-weight: 700;
+    }
+    button {
+        color: #828282;
+        @include flex();
+        padding: 5px;
+        &:first-child {
+            border-right: 1px solid #E0E0E0;
+        }
+        &:last-child {
+            border-left: 1px solid #E0E0E0;
+        }
+    }
+}
+.rating {
+    width: 100px;
+    height: 18px;
+    background: url(../imgs/icons/sprite-empty.svg) no-repeat;
+    background-position: left center;
+    background-size: 100% 100%;
+    &-bar {
+        width: 0%;
+        height: 100%;
+        background: url(../imgs/icons/sprite-full.svg) no-repeat;
+        background-position: left center;
+        background-size: cover;
+    }
+}
 button {
     background: none;
     border: none;
@@ -214,7 +267,6 @@ button {
     text-align: center;
     transition: $transition;
     width: fit-content;
-    border-radius: $radius;
     &-1 {
         @extend .btn;
         font-family: $font-2;
@@ -222,6 +274,7 @@ button {
         background: $accent-color;
         border: 1px solid $accent-color;
         text-transform: uppercase;
+        border-radius: $radius;
         &:hover, &:focus {
             color: $font-color;
             background: $accent-color;
@@ -234,10 +287,66 @@ button {
             box-shadow: inset 0px 0px 2em rgba($font-color, .34);
         }
     }
+    &-2 {
+        @extend .btn;
+        font-family: $font-2;
+        color: #0E1527;
+        background: $font-color;
+        text-transform: uppercase;
+        border-radius: 0px;
+        &:hover, &:focus, &:active, &.active {
+            color: #0E1527;
+            background: $accent-color;
+        }
+    }
+    &-3 {
+        @extend .btn;
+        font-family: $font-2;
+        color: #0E1527;
+        background: transparent;
+        text-transform: uppercase;
+        border-radius: 1px solid $gray;
+        &:hover, &:focus, &:active, &.active {
+            color: #0E1527;
+            background: $accent-color;
+        }
+    }
 }
 
 .mb-8 {margin-bottom: 8em;}
+.link {
+    transition: $transition;
+    &:hover, &:focus {color:$accent-color;}
+    &:active {color: $accent-dark;}
+}
 
+/* swiper */
+.swiper-5 {
+    position: relative;
+    padding-top: 4em;
+    .swiper-button-prev, .swiper-button-next {
+        position: absolute;
+        top: 1px;
+        left: unset;
+        width: 2.2em;
+        height: 2.2em;
+        background-color: $accent-color;
+        border-radius: $radius; 
+        border: 1px solid $bg-color;
+        margin-top: 0px;
+        transition: $transition;
+        outline: 1px solid transparent;
+        &::before, &::after {content: unset;}
+        &:hover {
+            outline: 1px solid $font-color;
+        }
+        svg {
+            path {color: $font-color;}
+        }
+    }
+    .swiper-button-prev {right: 2.5em;}
+    .swiper-button-next {right: 1px;}
+}
 
 body {
     background-color: $bg-color;
@@ -245,7 +354,6 @@ body {
     font-size: 14px;
     font-family: $font-1;
 }
-
 
 header {
     font-family: $font-2;
@@ -265,6 +373,7 @@ header {
             input {
                 min-width: 300px;
                 font-weight: 700;
+                @include placeholder(#757575, 700);
             }
             hr {
                 height: 20px;
@@ -357,6 +466,7 @@ main {
     background-color: rgba($color: #000000, $alpha: .58);
     &-bg {
         @include absBG(-1);
+        object-fit: cover;
     }
     .btn-1 {
         font-family: $font-3;
@@ -382,6 +492,42 @@ main {
             @include clamp(2, 1.2em, true);
             margin-bottom: .5em;
         }
+    }
+}
+
+.product-card {
+    font-family: $font-2;
+    background-color: $font-color;
+    color: $bg-color;
+    border-radius: $radius;
+    padding: 1em 0;
+    img {
+        width: 100%;
+        height: 225px;
+        object-fit: cover;
+    }
+    .text {
+        padding: 0 1em;
+        h6 {
+            @include clamp(2, 1.3em, true);
+        }
+        .price {
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .btn-1 {
+            font-size: .9em;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+    }
+    hr {
+        background-color: #F2F2F2;
+        height: 1px;
+        border: none;
+        width: 100%;
+        margin: 1em 0;
+        opacity: 1;
     }
 }
 
@@ -425,7 +571,7 @@ main {
                 p {
                     font-size: 1.5em;
                     font-weight: 700;
-                    color: #C2C2C2;
+                    color: $gray;
                 }
                 .num {
                     font-size: 4.5em;
@@ -439,8 +585,19 @@ main {
 }
 
 .sec-7 {
-    border-top: 3px solid $accent-color;
-    padding-top: 4.85em;
+    position: relative;
+    min-height: calc(300px + 4.85em);
+    .container {
+        border-top: 3px solid $accent-color;
+        padding-top: 4.85em;
+    }
+    .instruction {
+        position: absolute;
+        top: 4.85em;
+        right: 2%;
+        height: 300px;
+        z-index: 0;
+    }
     h2 {
         span {
             font-size: 1.75em;
@@ -449,9 +606,58 @@ main {
     }
 }
 
+.sec-8 {
+    .swiper-5 {
+        .img {
+            width: 100%;
+            height: 100px;
+            object-fit: scale-down;
+            padding: 1em;
+        }
+    }
+}
+
+.sec-9 {
+    position: relative;
+    background-color: rgba(#000, $alpha: .8);
+    padding: 8em 0;
+    font-family: $font-1;
+    &-bg {
+        @include absBG(-1);
+        object-fit: cover;
+    }
+    .points-list {
+        li {
+            width: 40%;
+            &:nth-child(2){margin-left: 35%;}
+            &:not(:first-child){margin-top: 5em;}
+            img {
+                width: 4em;
+                margin-bottom: 1em;
+            }
+            div {
+                background-color: $font-color;
+                color: #0E1527;
+                padding: .75em 1em;
+            }
+        }
+    }
+    h2 {
+        font-size: 3.2em;
+        font-weight: 400;
+        font-family: $font-1;
+        text-transform: uppercase;
+    }
+    form {
+        input, button {
+            font-size: 1.4em;
+        }
+    }
+}
+
 footer {
     font-family: $font-2;
-    padding: 3em 0;
+    padding: 4em 0 5em;
     height: var(--f-height);
     hr {
         width: 64px;

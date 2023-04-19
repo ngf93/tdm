@@ -1,0 +1,13 @@
+<svg width="59" height="55" viewBox="0 0 59 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse opacity="0.2" cx="29.4666" cy="27.4953" rx="28.869" ry="26.8694" fill="white"/>
+<ellipse opacity="0.5" cx="29.4668" cy="27.4957" rx="21.5205" ry="20.0299" fill="white"/>
+<rect x="13.7595" y="13.8923" width="30.365" height="28.1836" rx="14.0918" fill="white" stroke="white" stroke-width="1.12843"/>
+<g clip-path="url(#clip0_1_2020)">
+<path d="M26.1863 31.5495L22.3559 27.9844L21.0562 29.1941L26.1863 33.9689L37.209 23.7097L35.9092 22.5L26.1863 31.5495Z" fill="#A89881"/>
+</g>
+<defs>
+<clipPath id="clip0_1_2020">
+<rect width="22.0454" height="20.5184" fill="white" transform="translate(17.9194 17.7246)"/>
+</clipPath>
+</defs>
+</svg>
