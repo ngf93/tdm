@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/style.min.css" />
     <link rel="stylesheet" href="fonts/fonts.css" />
     <title>TDM</title>
@@ -14,7 +18,7 @@
         <div class="top container">
             <a href="index.html"><img src="imgs/logo.svg" alt="logo"></a>
             <form action="">
-                <input type="search" placeholder="Поиск по товарам, категориям и производителям">
+                <input type="search" placeholder="Поиск">
                 <hr>
                 <select>
                     <option selected disabled value="0">Все категории</option>
@@ -29,25 +33,25 @@
             <ul class="list-unstyled d-flex">
                 <li>
                     <a href="">
-                        <img src="imgs/icons/compare.svg" alt="Сравнение">
+                        <img src="imgs/icons/compare.svg" alt="Сравнение" title="Сравнение">
                         <span>Сравнение</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="imgs/icons/favorite.svg" alt="Избранное">
+                        <img src="imgs/icons/favorite.svg" alt="Избранное" title="Избранное">
                         <span>Избранное</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="imgs/icons/shopping-cart.svg" alt="Корзина">
+                        <img src="imgs/icons/shopping-cart.svg" alt="Корзина" title="Корзина">
                         <span>Корзина</span>
                     </a>
                 </li>
             </ul>
-            <div>
-                <a class="d-block text-end fs-12 fw-7 text-decoration-underline mb-2" href="tel:+79005479797">+7 (900) 547-97-97</a>
+            <div class="contacts">
+                <a class="phone" href="tel:+79005479797">+7 (900) 547-97-97</a>
                 <div class="d-flex">
                     <button type="button">
                         <img src="imgs/icons/phone.svg" alt="Заказать звонок" class="icon me-1">
@@ -62,7 +66,9 @@
             <ul class="container">
                 <li>
                     <a href="" class="main-link">
-                        <img src="imgs/icons/menu.svg" alt="Каталог">
+                        <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.5 0H18.5V2H0.5V0ZM0.5 5H18.5V7H0.5V5ZM0.5 10H18.5V12H0.5V10Z" fill="currentColor"/>
+                        </svg>
                         <span>Каталог товаров</span>
                     </a>
                 </li>
@@ -75,31 +81,239 @@
             </ul>
         </nav>
     </header>
+
     <main>
-        <section class="sec-1">
+        <section class="sec-1 mb-8">
             <img src="imgs/bg.png" alt="ВСЕ ВИДЫ САЙДИНГА От топовых производителей" class="sec-1-bg">
             <div class="container h-100 d-flex flex-column justify-content-center">
-                <h1>ВСЕ ВИДЫ САЙДИНГА</h1>
+                <h1 class="mb-3">ВСЕ ВИДЫ САЙДИНГА</h1>
                 <h4>От топовых производителей</h4>
-                <button type="button" class="btn-1 mt-5">заказать бесплатный образец</button>
+                <button type="button" class="btn-1 fs-20 fw-7">заказать бесплатный образец</button>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="sec-2 mb-8">
+                <ul class="list-unstyled row row-cols-4 g-4">
+                    <li>
+                        <figure>
+                            <img src="imgs/img1.jpg" alt="Виниловый сайдинг">
+                            <figcaption>
+                                <h3>Виниловый сайдинг</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img2.jpg" alt="Фасадные панели">
+                            <figcaption>
+                                <h3>Фасадные панели</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img3.jpg" alt="Фасадные Термопанели">
+                            <figcaption>
+                                <h3>Фасадные Термопанели</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img4.jpg" alt="Фиброцементный сайдинг">
+                            <figcaption>
+                                <h3>Фиброцементный сайдинг</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img5.jpg" alt="Кровля">
+                            <figcaption>
+                                <h3>Кровля</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img6.jpg" alt="Террасная доска ДПК">
+                            <figcaption>
+                                <h3>Террасная доска ДПК</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img7.jpg" alt="Комплектующие">
+                            <figcaption>
+                                <h3>Комплектующие</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="imgs/img8.jpg" alt="Утеплитель">
+                            <figcaption>
+                                <h3>Утеплитель</h3>
+                                <p class="fw-7">ХХХ товаров</p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="sec-3 mb-8">
+                <h2>Хиты продаж</h2>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <img src="imgs/product.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит">
+
+                                <h5>Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит</h5>
+                                <p>Артикул: 1655-7</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </section>
+
+            <section class="sec-4 mb-8">
+                <div class="row justify-content-between">
+                    <div class="col-6">
+                        <h2>наши преимущества</h2>
+                    </div>
+                    <div class="col-3">
+                        <ul>
+                            <li>Доставка до дома</li>
+                            <li>Работаем во всех регионах России</li>
+                            <li>Больше объем заказа - больше скидки</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sec-6 mb-8">
+                <div class="row justify-content-between">
+                    <div class="col-6">
+                        <h2>О компании в&nbsp;цифрах</h2>
+                    </div>
+                    <div class="col-6">
+                        <ul class="row row-cols-2 gx-5 gy-4">
+                            <li>
+                                <div>
+                                    <p class="num">11+</p>
+                                    <p>лет на рынке</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p class="num">1 год</p>
+                                    <p>гарантии на материалы</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p class="num">2-3 дня</p>
+                                    <p>средний срок доставки</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p class="num">100%</p>
+                                    <p>довольных клиентов</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sec-7 mb-8">
+                <h2><span>Получить видеоинструкцию</span> <br/>по замеру сайдинга</h2>
+                <button type="button" class="btn-1 fs-18 fw-7 mt-5">ПОЛУЧИТЬ</button>
+            </section>
+
+            <section class="sec-8 mb-8">
+                <h2>Бренды</h2>
+            </section>
+        </div>
+
+        <section class="sec-9 mb-8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Контакты</h3>
+                        <h2>ОСТАВЬТЕ ЗАЯВКУ ДЛЯ расчета стоимости</h2>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="container">
             <div class="row row-cols-4">
-                <div></div>
-                <div></div>
-                <div></div>
                 <div>
-                    <a class="d-block text-end fs-12 fw-7 text-decoration-underline mb-2" href="tel:+79005479797">+7 (900) 547-97-97</a>
-                    <div class="d-flex">
-                        <button type="button">
-                            <img src="imgs/icons/phone.svg" alt="Заказать звонок" class="icon me-1">
-                            <span>Заказать звонок</span>
-                        </button>
-                        <a href="" class="ms-2"><img src="imgs/icons/whatsapp.svg" alt="whatsapp" class="social"></a>
-                        <a href="" class="ms-2"><img src="imgs/icons/viber.svg" alt="viber" class="social"></a>
+                    <h3>Каталог товаров</h3>
+                    <hr>
+                    <ul class="list-unstyled menu">
+                        <li><a href="">Акции</a></li>
+                        <li><a href="">Виниловый сайдинг</a></li>
+                        <li><a href="">Фасадные панели</a></li>
+                        <li><a href="">Террасная доска ДПК</a></li>
+                        <li><a href="">Фиброцементный сайдинг</a></li>
+                        <li><a href="">Фасадные Термопанели</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Помощь</h3>
+                    <hr>
+                    <ul class="list-unstyled menu">
+                        <li><a href="">Оплата</a></li>
+                        <li><a href="">Доставка</a></li>
+                        <li><a href="">Возврат</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Мы в соц. сетях</h3>
+                    <hr>
+                    <ul class="list-unstyled d-flex social">
+                        <li><a href=""><img src="imgs/icons/youtube.svg" alt="youtube"></a></li>
+                        <li><a href=""><img src="imgs/icons/vk.svg" alt="vk"></a></li>
+                        <li><a href=""><img src="imgs/icons/odnokl.svg" alt="одноклассники"></a></li>
+                        <li><a href=""><img src="imgs/icons/telegram.svg" alt="telegram"></a></li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-end">
+                    <div class="contacts">
+                        <a class="phone" href="tel:+79005479797">+7 (900) 547-97-97</a>
+                        <div class="d-flex">
+                            <button type="button">
+                                <img src="imgs/icons/phone.svg" alt="Заказать звонок" class="icon me-1">
+                                <span>Заказать звонок</span>
+                            </button>
+                            <a href="" class="ms-2"><img src="imgs/icons/whatsapp.svg" alt="whatsapp" class="social"></a>
+                            <a href="" class="ms-2"><img src="imgs/icons/viber.svg" alt="viber" class="social"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,6 +321,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

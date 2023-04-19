@@ -3,7 +3,7 @@
 :root {
     --top: 123px;
     --nav: 50px;
-    --f-height: 80px;
+    --f-height: 290px;
     // @include media-breakpoint-down(md) {
     //   --h-height: 70px;
     // }
@@ -17,10 +17,11 @@ $accent-color: #E86D00;
 $accent-dark: #B25400;
 $bg-color: #262626;
 $font-color: #ffffff;
-$radius: .5em;
+$radius: 5px;
 $transition: 300ms ease-in-out;
 $font-1: 'Montserrat';
 $font-2: 'SF Pro Text';
+$font-3: 'roadradio';
 
 /* mixins */
 @mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
@@ -78,6 +79,26 @@ $font-2: 'SF Pro Text';
         font-weight: $fw;
     }
 }
+@mixin contacts($f-size: 1em) {
+    @include flex(column, flex-end, flex-end, nowrap);
+    font-size: $f-size;
+    .phone {
+        display: block;
+        font-size: 1.4em;
+        font-weight: 700;
+        text-align: right;
+        text-decoration: underline;
+        margin-bottom: .2em;
+    }
+    .icon {
+        width: 1.2em;
+        height: 1.2em;
+    }
+    .social {
+        width: 1.75em;
+        height: 1.75em;
+    }
+}
 
 /* Typography */
 a, a:hover, a:focus, a:active {
@@ -90,12 +111,21 @@ h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, selec
     line-height: 120%;
     margin-bottom: 0px;
 }
-
 h1 {
     font-family: $font-1;
     font-weight: 700;
     font-size: 5.4em;
     text-align: left;
+}
+h2 {
+    font-family: $font-2;
+    font-size: 2.3em;
+    font-weight: 700;
+}
+h3 {
+    font-family: $font-2;
+    font-size: 1.25em;
+    font-weight: 700;
 }
 h4 {
     font-family: $font-1;
@@ -153,12 +183,12 @@ select {
     color: $font-color;
     cursor: pointer;
     min-width: 120px;
-    padding: 0.75em 1.65em;
+    padding: 0.5em 1em;
     border: 1px solid pink;
-    // background: url(imgs/chevron-down.svg), $glass;
-    // background-repeat: no-repeat;
-    // background-position: calc(100% - 0.67em) 50%, 50% 50%;
-    // background-size: 1.6em, cover;
+    background: url(../imgs/icons/chevron-down.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 4px) 50%;
+    background-size: 8px;
     transition: $transition;
     // &:hover, &:focus {
     //   background-color: rgba($pale-blue, .1);
@@ -180,29 +210,33 @@ button {
 }
 .btn {
     @include flex(row, center, center, nowrap);
-    padding: .65em 1.65em;
+    padding: .75em 1.75em;
     text-align: center;
     transition: $transition;
     width: fit-content;
-    font-weight: 400;
     border-radius: $radius;
     &-1 {
         @extend .btn;
+        font-family: $font-2;
         color: $font-color;
         background: $accent-color;
         border: 1px solid $accent-color;
+        text-transform: uppercase;
         &:hover, &:focus {
             color: $font-color;
             background: $accent-color;
-            border: 1px solid $font-color;
-            box-shadow: inset 0px 0px 32.624px rgba($color: $font-color, $alpha: .34);
+            border: 1px solid rgba($font-color, .5);
+            box-shadow: inset 0px 0px 2em rgba($font-color, .34), 0px 5px .5em rgba($accent-color, .5);
         }
-        // &:active, &.active {
-        // color: $white !important;
-        // background: $gradient-1;
-        // }
+        &:active, &.active {
+            color: $font-color;
+            border: 1px solid rgba($font-color, .5);
+            box-shadow: inset 0px 0px 2em rgba($font-color, .34);
+        }
     }
 }
+
+.mb-8 {margin-bottom: 8em;}
 
 
 body {
@@ -211,6 +245,7 @@ body {
     font-size: 14px;
     font-family: $font-1;
 }
+
 
 header {
     font-family: $font-2;
@@ -228,7 +263,7 @@ header {
                 font-weight: 700;
             }
             input {
-                min-width: 380px;
+                min-width: 300px;
                 font-weight: 700;
             }
             hr {
@@ -239,8 +274,10 @@ header {
                 margin: 0px 15px;
                 opacity: 1;
             }
+            select {padding-right: 12px;}
             button {
                 @include flex();
+                margin-left: 15px;
                 img {
                     width: 20px;
                     height: 20px;
@@ -263,14 +300,7 @@ header {
                 }
             }
         }
-        .icon {
-            width: 1em;
-            height: 1em;
-        }
-        .social {
-            width: 1.5em;
-            height: 1.5em;
-        }
+        .contacts {@include contacts(.86em);}
     }
     nav {
         height: var(--nav);
@@ -283,6 +313,16 @@ header {
                 height: 100%;
                 flex-grow: 1;
                 text-align: center;
+                position: relative;
+                &:not(:last-child)::after{
+                    content: '';
+                    position: absolute;
+                    right: 0px;
+                    top: 20%;
+                    height: 60%;
+                    width: 1px;
+                    background-color: $accent-dark;
+                }
                 a {
                     height: 100%;
                     @include flex();
@@ -290,14 +330,15 @@ header {
                     background-color: transparent;
                     transition: $transition;
                     &:hover, &:focus, &:active {
-                        background-color: $accent-dark;
+                        color: $bg-color;
                     }
                     &.main-link {
                         background-color: $accent-dark;
-                        img {
+                        svg {
                             width: 18px;
                             height: 12px;
                             margin-right: 15px;
+                            margin-bottom: 2px;
                         }
                     }
                 }
@@ -305,7 +346,6 @@ header {
         }
     }
 }
-
 
 main {
     min-height: calc(100vh - var(--top) - var(--nav) - var(--f-height));
@@ -318,8 +358,127 @@ main {
     &-bg {
         @include absBG(-1);
     }
+    .btn-1 {
+        font-family: $font-3;
+        margin-top: 4em;
+    }
 }
 
-// footer {
+.sec-2 {
+    figure {
+        padding: 1.34em;
+        font-family: $font-2;
+        border: 1px solid #F2F2F2;
+        border-radius: $radius;
+        @include flex(column, flex-start, center, nowrap);
+        text-align: center;
+        img {
+            width: 125px;
+            height: 125px;
+            object-fit: contain;
+            margin-bottom: 1.3em;
+        }
+        h3 {
+            @include clamp(2, 1.2em, true);
+            margin-bottom: .5em;
+        }
+    }
+}
 
-// }
+.sec-4 {
+    border-top: 3px solid $accent-color;
+    padding-top: 3.6em;
+    h2 {
+        font-size: 4.5em;
+        line-height: 140%;
+        text-transform: uppercase;
+    }
+    ul {
+        @include list();
+        font-size: 1.85em;
+        li {
+            border-bottom: 2px solid $accent-color;
+            padding-bottom: 0.25em;
+            &::before {content: '► '};
+            &:not(:last-child){
+                margin-bottom: 1.75em;
+            }
+        }
+    }
+}
+
+.sec-6 {
+    border-top: 3px solid $accent-color;
+    padding-top: 3.6em;
+    h2 {
+        font-size: 4.5em;
+        line-height: 140%;
+        text-transform: uppercase;
+    }
+    ul {
+        @include list();
+        font-family: $font-2;
+        li {
+            div {
+                border-bottom: 2px solid $accent-color;
+                padding-bottom: 0.5em;
+                p {
+                    font-size: 1.5em;
+                    font-weight: 700;
+                    color: #C2C2C2;
+                }
+                .num {
+                    font-size: 4.5em;
+                    line-height: 100%;
+                    color: $font-color;
+                    margin-bottom: .2em;
+                }
+            }
+        }
+    }
+}
+
+.sec-7 {
+    border-top: 3px solid $accent-color;
+    padding-top: 4.85em;
+    h2 {
+        span {
+            font-size: 1.75em;
+            text-transform: uppercase;
+        }
+    }
+}
+
+footer {
+    font-family: $font-2;
+    padding: 3em 0;
+    height: var(--f-height);
+    hr {
+        width: 64px;
+        height: 4px;
+        background-color: $accent-color;
+        border: none;
+        opacity: 1;
+        margin: 1em 0
+    }
+    ul.menu {
+        li {
+            &:not(:first-child){margin-top: .75em}
+            a {
+                color: #CCCCCC;
+                font-weight: 700;
+            }
+        }
+    }
+    ul.social {
+        li {
+            &:not(:first-child){margin-left: .75em}
+            img {
+                width: 1.5em;
+                height: 1.5em;
+                object-fit: contain;
+            }
+        }
+    }
+    .contacts {@include contacts(1.5em);}
+}
