@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
-:root {
-    --top: 123px;
-    --nav: 50px;
-    --f-height: 330px;
-    // @include media-breakpoint-down(md) {
-    //   --h-height: 70px;
-    // }
-    // @include media-breakpoint-down(sm) {
-    //   --h-height: 55px;
-    //   --f-height: 64px;
-    // }
-}
-
 $accent-color: #E86D00;
 $accent-dark: #B25400;
 $bg-color: #262626;
@@ -23,6 +10,12 @@ $transition: 300ms ease-in-out;
 $font-1: 'Montserrat';
 $font-2: 'SF Pro Text';
 $font-3: 'roadradio';
+
+$bp-xxl: 1399.98px;
+$bp-xl: 1199.98px;
+$bp-lg: 991.98px;
+$bp-md: 767.98px;
+$bp-sm: 575.98px;
 
 /* mixins */
 @mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
@@ -101,6 +94,26 @@ $font-3: 'roadradio';
     }
 }
 
+:root {
+    --top: 123px;
+    --nav: 50px;
+    --f-height: 330px;
+    @media (max-width: $bp-xxl) {
+        --top: 110px;
+    }
+    @media (max-width: $bp-xl) {
+        --top: 100px;
+        --f-height: 300px;
+    }
+    @media (max-width: $bp-md) {
+        --top: 52px;
+        --f-height: 315px;
+    }
+    @media (max-width: $bp-sm) {
+        --f-height: 270px;
+    }
+}
+
 /* Typography */
 a, a:hover, a:focus, a:active {
     color: inherit;
@@ -117,11 +130,26 @@ h1 {
     font-weight: 700;
     font-size: 5.4em;
     text-align: left;
+    @media (max-width: $bp-xl) {
+        font-size: 4.5em;
+    }
+    @media (max-width: $bp-lg) {
+        font-size: 3.5em;
+    }
+    @media (max-width: $bp-md) {
+        font-size: 2.75em;
+    }
+    @media (max-width: $bp-sm) {
+        font-size: 2em;
+    }
 }
 h2 {
     font-family: $font-2;
     font-size: 2.3em;
     font-weight: 700;
+    @media (max-width: $bp-md) {
+        font-size: 2em;
+    }
 }
 h3 {
     font-family: $font-2;
@@ -133,6 +161,18 @@ h4 {
     font-size: 2.7em;
     font-weight: 500;
     text-align: left;
+    @media (max-width: $bp-xl) {
+        font-size: 2.3em;
+    }
+    @media (max-width: $bp-lg) {
+        font-size: 1.7em;
+    }
+    @media (max-width: $bp-md) {
+        font-size: 1.3em;
+    }
+    @media (max-width: $bp-sm) {
+        font-size: 1em;
+    }
 }
 h5 {
     font-family: $font-1;
@@ -267,6 +307,9 @@ button {
     text-align: center;
     transition: $transition;
     width: fit-content;
+    @media (max-width: $bp-md) {
+        padding: .75em 1.75em .65em;
+    }
     &-1 {
         @extend .btn;
         font-family: $font-2;
@@ -313,7 +356,15 @@ button {
     }
 }
 
-.mb-8 {margin-bottom: 8em;}
+.mb-8 {
+    margin-bottom: 8em;
+    @media (max-width: $bp-xl) {
+        margin-bottom: 7em;
+    }
+    @media (max-width: $bp-lg) {
+        margin-bottom: 6em;
+    }
+}
 .link {
     transition: $transition;
     &:hover, &:focus {color:$accent-color;}
@@ -321,12 +372,25 @@ button {
 }
 
 /* swiper */
-.swiper-5 {
-    position: relative;
-    padding-top: 4em;
-    .swiper-button-prev, .swiper-button-next {
+.swiper {
+    &-5 {
+        position: relative;
+        padding-top: 4em;
+        margin-top: -2.5em;
+        @media (max-width: $bp-md) {
+            .swiper-slide {width: 220px;}
+        }
+        @media (max-width: $bp-sm) {
+            .swiper-slide {width: 185px;}
+        }
+    }
+    &-1 {
+        position: relative;
+        padding-bottom: 1em;
+    }
+    &-button-prev, &-button-next {
         position: absolute;
-        top: 1px;
+        top: 2px;
         left: unset;
         width: 2.2em;
         height: 2.2em;
@@ -344,8 +408,23 @@ button {
             path {color: $font-color;}
         }
     }
-    .swiper-button-prev {right: 2.5em;}
-    .swiper-button-next {right: 1px;}
+    &-button-prev {right: 2.5em;}
+    &-button-next {right: 1px;}
+    &-pagination {
+        bottom: 0px !important;
+        &-bullet {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: rgba(#000, .2);
+            transition: $transition;
+            opacity: 1;
+            &-active {
+                background-color: $accent-color;
+                opacity: 1;
+            }
+        }
+    }
 }
 
 body {
@@ -353,6 +432,12 @@ body {
     color: $font-color;
     font-size: 14px;
     font-family: $font-1;
+    @media (max-width: $bp-lg) {
+        font-size: 12px;
+    }
+    @media (max-width: $bp-sm) {
+        font-size: 10px;
+    }
 }
 
 header {
@@ -360,11 +445,19 @@ header {
     .top {
         height: var(--top);
         @include flex(row, space-between, center, nowrap);
+        .logo {width: 100px;}
         form {
+            --x: 15px;
             @include flex();
             border: 2px solid #EDEDED;
             border-radius: $radius;
-            padding: 5px 15px;
+            padding: 5px var(--x);
+            @media (max-width: $bp-lg) {
+                --x: 10px;
+            }
+            @media (max-width: $bp-sm) {
+                flex-direction: column;
+            }
             input, select {
                 border: none;
                 padding: .5em 0;
@@ -374,19 +467,32 @@ header {
                 min-width: 300px;
                 font-weight: 700;
                 @include placeholder(#757575, 700);
+                @media (max-width: $bp-xxl) {
+                    min-width: 200px;
+                }
+                @media (max-width: $bp-lg) {
+                    min-width: 180px;
+                }
+                 @media (max-width: $bp-sm) {
+                    border-bottom: 1px solid #EDEDED;
+                    margin-bottom: 1em;
+                 }
             }
             hr {
                 height: 20px;
                 width: 1px;
                 background-color: #EDEDED;
                 border: none;
-                margin: 0px 15px;
+                margin: 0px var(--x);
                 opacity: 1;
+                @media (max-width: $bp-sm) {
+                    display: none;
+                }
             }
             select {padding-right: 12px;}
             button {
                 @include flex();
-                margin-left: 15px;
+                margin-left: var(--x);
                 img {
                     width: 20px;
                     height: 20px;
@@ -396,11 +502,20 @@ header {
         ul {
             @include flex();
             li {
-                &:not(:first-child){border-left: 1px solid #EBF8FF;}
-                a {
+                &:not(:last-child){
+                    border-right: 1px solid #EBF8FF;
+                    @media (max-width: $bp-md) {border-right:none;}
+                }
+                a, button {
                     @include flex();
                     height: 20px;
                     padding: 0 15px;
+                    @media (max-width: $bp-lg) {
+                        padding: 0 10px;
+                    }
+                    @media (max-width: $bp-sm) {
+                        padding: 0 5px;
+                    }
                     img {
                         width: 16px;
                         height: 16px;
@@ -414,15 +529,33 @@ header {
     nav {
         height: var(--nav);
         background-color: $accent-color;
-        .container {
+        .btn-catalog {
+            font-size: 1.3em;
+            font-weight: 700;
+            height: 100%;
+            width: 100%;
+            @include flex();
+            img {margin-bottom: 1px;}
+        }
+        ul {
             @include list();
             @include flex();
+            width: 100%;
             height: 100%;
+            @media (max-width: $bp-lg) {
+                @include flex(column, flex-start, stretch, nowrap);
+                height: fit-content;
+                margin-bottom: 1em;
+            }
             li {
                 height: 100%;
                 flex-grow: 1;
                 text-align: center;
                 position: relative;
+                @media (max-width: $bp-lg) {
+                    height: unset;
+                    flex-grow: unset;
+                }
                 &:not(:last-child)::after{
                     content: '';
                     position: absolute;
@@ -431,6 +564,9 @@ header {
                     height: 60%;
                     width: 1px;
                     background-color: $accent-dark;
+                    @media (max-width: $bp-lg) {
+                        content: unset;
+                    }
                 }
                 a {
                     height: 100%;
@@ -438,16 +574,29 @@ header {
                     font-weight: 700;
                     background-color: transparent;
                     transition: $transition;
+                    @media (max-width: $bp-xxl) {
+                        font-size: .85em;
+                    }
+                    @media (max-width: $bp-lg) {
+                        padding: 1em;
+                        font-size: 1.25em;
+                        @include flex(row, flex-start, center, nowrap);
+                    }
                     &:hover, &:focus, &:active {
                         color: $bg-color;
+                        @media (max-width: $bp-lg) {
+                            color: $accent-color;
+                        }
                     }
-                    &.main-link {
-                        background-color: $accent-dark;
-                        svg {
-                            width: 18px;
-                            height: 12px;
-                            margin-right: 15px;
-                            margin-bottom: 2px;
+                    @media (min-width: 992px) {
+                        &.main-link {
+                            background-color: $accent-dark;
+                            svg {
+                                width: 18px;
+                                height: 12px;
+                                margin-right: 15px;
+                                margin-bottom: 2px;
+                            }
                         }
                     }
                 }
@@ -464,6 +613,21 @@ main {
     height: 860px;
     position: relative;
     background-color: rgba($color: #000000, $alpha: .58);
+    @media (max-width: $bp-xxl) {
+        height: 760px;
+    }
+    @media (max-width: $bp-xl) {
+        height: 650px;
+    }
+    @media (max-width: $bp-lg) {
+        height: 500px;
+    }
+    @media (max-width: $bp-md) {
+        height: 350px;
+    }
+    @media (max-width: $bp-sm) {
+        height: 220px;
+    }
     &-bg {
         @include absBG(-1);
         object-fit: cover;
@@ -471,6 +635,16 @@ main {
     .btn-1 {
         font-family: $font-3;
         margin-top: 4em;
+        font-size: 2em;
+        @media (max-width: $bp-xl) {
+            font-size: 1.5em;
+        }
+        @media (max-width: $bp-md) {
+            font-size: 1.25em;
+        }
+        @media (max-width: $bp-sm) {
+            font-size: 1em;
+        }
     }
 }
 
@@ -487,6 +661,10 @@ main {
             height: 125px;
             object-fit: contain;
             margin-bottom: 1.3em;
+            @media (max-width: $bp-sm) {
+                width: 60px;
+                height: 60px;
+            }
         }
         h3 {
             @include clamp(2, 1.2em, true);
@@ -495,16 +673,44 @@ main {
     }
 }
 
+/* section 3, section 5 */
 .product-card {
     font-family: $font-2;
     background-color: $font-color;
     color: $bg-color;
     border-radius: $radius;
     padding: 1em 0;
+    position: relative;
+    .marking {
+        @include list();
+        @include flex(row, flex-start, center, wrap);
+        position: absolute;
+        z-index: 10;
+        top: 1em;
+        left: 1em;
+        li {
+            padding: 6px 10px 4px;
+            border-radius: 3px;
+            font-size: .85em;
+            font-weight: 700;
+            &:not(:first-child){margin-left: .5em;}
+            &.hit {
+                background-color: #9B51E0;
+                color: $font-color;
+            }
+            &.new {
+                background-color: $accent-color;
+                color: $font-color;
+            }
+        }
+    }
     img {
         width: 100%;
         height: 225px;
-        object-fit: cover;
+        object-fit: scale-down;
+        @media (max-width: $bp-sm) {
+            height: 160px;
+        }
     }
     .text {
         padding: 0 1em;
@@ -519,6 +725,7 @@ main {
             font-size: .9em;
             font-weight: 700;
             text-transform: capitalize;
+            padding: 0.75em 1em;
         }
     }
     hr {
@@ -534,14 +741,30 @@ main {
 .sec-4 {
     border-top: 3px solid $accent-color;
     padding-top: 3.6em;
+    @media (max-width: $bp-xl) {
+        padding-top: 2.6em;
+    }
+    @media (max-width: $bp-md) {
+        padding-right: 45%;
+    }
     h2 {
         font-size: 4.5em;
         line-height: 140%;
         text-transform: uppercase;
+        @media (max-width: $bp-xl) {
+            font-size: 3.5em;
+        }
+        @media (max-width: $bp-md) {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
     }
     ul {
         @include list();
         font-size: 1.85em;
+        @media (max-width: $bp-xxl) {
+            font-size: 1.5em;
+        }
         li {
             border-bottom: 2px solid $accent-color;
             padding-bottom: 0.25em;
@@ -556,10 +779,20 @@ main {
 .sec-6 {
     border-top: 3px solid $accent-color;
     padding-top: 3.6em;
+    @media (max-width: $bp-xl) {
+        padding-top: 2.6em;
+    }
     h2 {
         font-size: 4.5em;
         line-height: 140%;
         text-transform: uppercase;
+        @media (max-width: $bp-xl) {
+            font-size: 3.5em;
+        }
+        @media (max-width: $bp-md) {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
     }
     ul {
         @include list();
@@ -568,16 +801,32 @@ main {
             div {
                 border-bottom: 2px solid $accent-color;
                 padding-bottom: 0.5em;
+                height: 100%;
+                @media (max-width: $bp-md) {
+                    border-bottom: 1.5px solid $accent-color;
+                }
                 p {
                     font-size: 1.5em;
                     font-weight: 700;
                     color: $gray;
+                    @media (max-width: $bp-lg) {
+                        font-size: 1.25em;
+                    }
                 }
                 .num {
                     font-size: 4.5em;
                     line-height: 100%;
                     color: $font-color;
                     margin-bottom: .2em;
+                    @media (max-width: $bp-xxl) {
+                        font-size: 4em;
+                    }
+                    @media (max-width: $bp-xl) {
+                        font-size: 3.5em;
+                    }
+                    @media (max-width: $bp-lg) {
+                        font-size: 3em;
+                    }
                 }
             }
         }
@@ -585,23 +834,63 @@ main {
 }
 
 .sec-7 {
+    --height: 300px;
+    --pad: 4.85em;
     position: relative;
-    min-height: calc(300px + 4.85em);
+    min-height: calc(var(--height) + var(--pad));
+    overflow: hidden;
+    @media (max-width: $bp-xl) {
+        --height: 250px;
+        --pad: 3.5em;
+    }
+    @media (max-width: $bp-lg) {
+        --height: 225px;
+    }
+    @media (max-width: $bp-sm) {
+        --height: 180px;
+    }
     .container {
         border-top: 3px solid $accent-color;
-        padding-top: 4.85em;
+        padding-top: var(--pad);
+        @media (max-width: $bp-md) {
+            padding-right: 20%;
+        }
     }
     .instruction {
         position: absolute;
-        top: 4.85em;
+        top: var(--pad);
         right: 2%;
-        height: 300px;
+        height: var(--height);
         z-index: 0;
+        @media (max-width: $bp-md) {
+            height: 30vw;
+            right: -3%;
+            bottom: 0px;
+            top: unset;
+        }
     }
     h2 {
+        @media (max-width: $bp-lg) {
+            font-size: 1.75em;
+        }
         span {
             font-size: 1.75em;
             text-transform: uppercase;
+            @media (max-width: $bp-xxl) {
+                font-size: 1.5em;
+            }
+            @media (max-width: $bp-xl) {
+                font-size: 1.25em;
+            }
+        }
+    }
+    .btn-1 {
+        font-size: 1.8em;
+        @media (max-width: $bp-xl) {
+            font-size: 1.5em;
+        }
+        @media (max-width: $bp-lg) {
+            font-size: 1.25em;
         }
     }
 }
@@ -622,13 +911,28 @@ main {
     background-color: rgba(#000, $alpha: .8);
     padding: 8em 0;
     font-family: $font-1;
+    @media (max-width: $bp-xxl) {
+        padding: 6.5em 0;
+    }
+    @media (max-width: $bp-xl) {
+        padding: 5em 0;
+    }
+    @media (max-width: $bp-md) {
+        padding: 3em 0;
+    }
+    @media (max-width: $bp-sm) {
+        h5 {
+            font-family: $font-2;
+            font-weight: 700;
+        }
+    }
     &-bg {
         @include absBG(-1);
         object-fit: cover;
     }
     .points-list {
         li {
-            width: 40%;
+            width: fit-content;
             &:nth-child(2){margin-left: 35%;}
             &:not(:first-child){margin-top: 5em;}
             img {
@@ -647,6 +951,14 @@ main {
         font-weight: 400;
         font-family: $font-1;
         text-transform: uppercase;
+        @media (max-width: $bp-xl) {
+            font-size: 3em;
+        }
+        @media (max-width: $bp-sm) {
+            font-family: $font-2;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
     }
     form {
         input, button {
@@ -659,6 +971,12 @@ footer {
     font-family: $font-2;
     padding: 4em 0 5em;
     height: var(--f-height);
+    @media (max-width: $bp-xl) {
+        padding: 3em 0 4em;
+    }
+    @media (max-width: $bp-md) {
+        padding: 2em 0;
+    }
     hr {
         width: 64px;
         height: 4px;
@@ -686,5 +1004,44 @@ footer {
             }
         }
     }
-    .contacts {@include contacts(1.5em);}
+    --size: 1.5em;
+    @media (max-width: $bp-xxl) {
+        --size: 1.3em;
+    }
+    @media (max-width: $bp-xl) {
+        --size: 1em;
+    }
+    .contacts {@include contacts(var(--size));}
 }
+
+.offcanvas-end, .offcanvas-top {
+    background-color: $bg-color;
+    color: $font-color;
+    .btn-close {
+        padding: 0px;
+        @include flex();
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        width: 2em;
+        height: 2em;
+        z-index: 10;
+        opacity: 1;
+        background-color: transparent;
+        border-radius: 3px;
+        transition: $transition;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        &:hover, &:focus, &:active {
+            background-color: $accent-color;
+        }
+    }
+    .contacts {
+        @include contacts(1.3em);
+        align-items: flex-start;
+        padding: 1em;
+    }
+}
+.offcanvas-top {height: fit-content !important;}

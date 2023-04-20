@@ -16,41 +16,62 @@
 <body>
     <header>
         <div class="top container">
-            <a href="index.html"><img src="imgs/logo.svg" alt="logo"></a>
-            <form action="">
-                <input type="search" placeholder="Поиск">
-                <hr>
-                <select>
-                    <option selected disabled value="0">Все категории</option>
-                    <option value="1">Категория 1</option>
-                    <option value="2">Категория 2</option>
-                    <option value="3">Категория 3</option>
-                </select>
-                <button type="submit">
-                    <img src="imgs/icons/search.svg" alt="search">
+            <div class="d-flex align-items-center">
+                <button class="btn-catalog d-lg-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCatalog">
+                    <img src="imgs/icons/menu2.svg" alt="menu">
                 </button>
-            </form>
+                <a href="index.html"><img src="imgs/logo.svg" alt="logo" class="logo"></a>
+            </div>
+            
+            <div class="offcanvas-md offcanvas-top" tabindex="-1" id="offcanvasSearch">
+                <div class="offcanvas-body">
+                    <form action="">
+                        <input type="search" placeholder="Поиск">
+                        <hr>
+                        <div class="d-flex align-items-center">
+                            <select>
+                                <option selected disabled value="0">Все категории</option>
+                                <option value="1">Категория 1</option>
+                                <option value="2">Категория 2</option>
+                                <option value="3">Категория 3</option>
+                            </select>
+                            <button type="submit">
+                                <img src="imgs/icons/search.svg" alt="search">
+                            </button>
+                            <button type="button" class="" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSearch" aria-label="Close">
+                                <img src="imgs/icons/close.svg" alt="close">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
             <ul class="list-unstyled d-flex">
+                <li class="d-md-none">
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch">
+                        <img src="imgs/icons/search.svg" alt="search">
+                    </button>
+                </li>
                 <li>
                     <a href="">
                         <img src="imgs/icons/compare.svg" alt="Сравнение" title="Сравнение">
-                        <span>Сравнение</span>
+                        <span class="d-none d-xl-inline">Сравнение</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <img src="imgs/icons/favorite.svg" alt="Избранное" title="Избранное">
-                        <span>Избранное</span>
+                        <span class="d-none d-xl-inline">Избранное</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <img src="imgs/icons/shopping-cart.svg" alt="Корзина" title="Корзина">
-                        <span>Корзина</span>
+                        <span class="d-none d-xl-inline">Корзина</span>
                     </a>
                 </li>
             </ul>
-            <div class="contacts">
+            <div class="d-none d-lg-flex contacts">
                 <a class="phone" href="tel:+79005479797">+7 (900) 547-97-97</a>
                 <div class="d-flex">
                     <button type="button">
@@ -63,22 +84,46 @@
             </div>
         </div>
         <nav>
-            <ul class="container">
-                <li>
-                    <a href="" class="main-link">
-                        <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.5 0H18.5V2H0.5V0ZM0.5 5H18.5V7H0.5V5ZM0.5 10H18.5V12H0.5V10Z" fill="currentColor"/>
-                        </svg>
-                        <span>Каталог товаров</span>
-                    </a>
-                </li>
-                <li><a href="">Акции</a></li>
-                <li><a href="">Виниловый сайдинг</a></li>
-                <li><a href="">Фасадные панели</a></li>
-                <li><a href="">Террасная доска ДПК</a></li>
-                <li><a href="">Фиброцементный сайдинг</a></li>
-                <li><a href="">Производители</a></li>
-            </ul>
+            <div class="container h-100">
+                <a href="" class="btn-catalog d-lg-none">
+                    <img src="imgs/icons/catalog.svg" alt="Каталог" class="me-1">
+                    <span>Каталог товаров</span>
+                </a>
+                <div class="offcanvas-lg offcanvas-end h-100" tabindex="-1" id="offcanvasCatalog">
+                    <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasCatalog" aria-label="Close">
+                        <img src="imgs/icons/close.svg" alt="close">
+                    </button>
+                    <div class="offcanvas-body h-100">
+                        <ul>
+                            <li class="d-none d-lg-block">
+                                <a href="" class="main-link">
+                                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 0H18.5V2H0.5V0ZM0.5 5H18.5V7H0.5V5ZM0.5 10H18.5V12H0.5V10Z" fill="currentColor"/>
+                                    </svg>
+                                    <span>Каталог товаров</span>
+                                </a>
+                            </li>
+                            <li><a href="">Акции</a></li>
+                            <li><a href="">Виниловый сайдинг</a></li>
+                            <li><a href="">Фасадные панели</a></li>
+                            <li><a href="">Террасная доска ДПК</a></li>
+                            <li><a href="">Фиброцементный сайдинг</a></li>
+                            <li><a href="">Производители</a></li>
+                        </ul>
+                        <div class="d-flex d-lg-none contacts">
+                            <a class="phone" href="tel:+79005479797">+7 (900) 547-97-97</a>
+                            <div class="d-flex">
+                                <button type="button">
+                                    <img src="imgs/icons/phone.svg" alt="Заказать звонок" class="icon me-1">
+                                    <span>Заказать звонок</span>
+                                </button>
+                                <a href="" class="ms-2"><img src="imgs/icons/whatsapp.svg" alt="whatsapp" class="social"></a>
+                                <a href="" class="ms-2"><img src="imgs/icons/viber.svg" alt="viber" class="social"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -88,13 +133,13 @@
             <div class="container h-100 d-flex flex-column justify-content-center">
                 <h1 class="mb-3">ВСЕ ВИДЫ САЙДИНГА</h1>
                 <h4>От топовых производителей</h4>
-                <button type="button" class="btn-1 fs-20 fw-7">заказать бесплатный образец</button>
+                <button type="button" class="btn-1 fw-7">заказать бесплатный образец</button>
             </div>
         </section>
 
         <div class="container">
             <section class="sec-2 mb-8">
-                <ul class="list-unstyled row row-cols-4 g-4">
+                <ul class="list-unstyled row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 g-xl-4 justify-content-center">
                     <li>
                         <figure>
                             <img src="imgs/img1.jpg" alt="Виниловый сайдинг">
@@ -176,7 +221,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="product-card">
-                                <div class="swiper swiper-1">
+                                <div class="swiper swiper-1 mb-2">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <img src="imgs/product.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит">
@@ -194,7 +239,7 @@
                                     <h6>Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит</h6>
                                     <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1655-7</p>
                                     <div class="rating mb-3">
-                                        <div class="rating-bar" style="width: 25%"></div>
+                                        <div class="rating-bar" style="width: 75%"></div>
                                     </div>
                                     <p class="price">360 ₽/пог. м</p>
                                     <div class="d-flex mt-3">
@@ -216,16 +261,434 @@
                                     <hr>
                                     <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
                                 </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1142-24837</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1652</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">360 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доская ДПК NanoWood Nature 3D пустотелая Венге">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доская ДПК NanoWood Nature 3D пустотелая Венге">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Террасная доская ДПК NanoWood Nature 3D пустотелая Венге</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 22469</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">380 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Docke, Stein, Янтарный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1377</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">570 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Графит</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1655-7</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 75%"></div>
+                                    </div>
+                                    <p class="price">360 ₽/пог. м</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product2.png" alt="Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Ю-Пласт Стоун Хаус Кирпич с декорированным швом Песочный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1142-24837</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product3.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1652</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">360 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доская ДПК NanoWood Nature 3D пустотелая Венге">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доска из ДПК Faynag Premium VELVET-ZEBRA — Кварц">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product4.jpg" alt="Террасная доская ДПК NanoWood Nature 3D пустотелая Венге">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Террасная доская ДПК NanoWood Nature 3D пустотелая Венге</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 22469</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">380 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product5.jpg" alt="Фасадная панель Docke, Stein, Янтарный">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Docke, Stein, Янтарный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1377</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">570 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="hit">Хит</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="swiper-button-prev">
                         <img src="imgs/icons/prev.svg" alt="prev">
@@ -238,10 +701,10 @@
 
             <section class="sec-4 mb-8">
                 <div class="row justify-content-between">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <h2>наши преимущества</h2>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-4 col-xl-3">
                         <ul>
                             <li>Доставка до дома</li>
                             <li>Работаем во всех регионах России</li>
@@ -251,12 +714,496 @@
                 </div>
             </section>
 
+            <section class="sec-5 mb-8">
+                <h2>Новые предложения</h2>
+                <div class="swiper swiper-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Альта-Профиль Кирпич Рустикальный 04</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 24398</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 75%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/пог. м</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Кирпич 40 мм Жёлтый</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1142-24837</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термосайдинг Доломит Венецианский Кирпич 40 мм Корса</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1652</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">360 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Каньон 20 мм Рубин</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 22469</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">380 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красныйй">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Кирпич 40 мм Красный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1377</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">570 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product6.jpg" alt="Фасадная панель Альта-Профиль Кирпич Рустикальный 04">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Фасадная панель Альта-Профиль Кирпич Рустикальный 04</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 24398</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 75%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/пог. м</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product7.jpg" alt="Термопанели Доломит Кирпич 40 мм Жёлтый">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Кирпич 40 мм Жёлтый</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1142-24837</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">485 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product8.jpg" alt="Термосайдинг Доломит Венецианский Кирпич 40 мм Корса">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термосайдинг Доломит Венецианский Кирпич 40 мм Корса</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1652</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 37%"></div>
+                                    </div>
+                                    <p class="price">360 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product9.jpg" alt="Термопанели Доломит Каньон 20 мм Рубин">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Каньон 20 мм Рубин</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 22469</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">380 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="swiper swiper-1 mb-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красный">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="imgs/product10.jpg" alt="Термопанели Доломит Кирпич 40 мм Красныйй">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="text">
+                                    <h6>Термопанели Доломит Кирпич 40 мм Красный</h6>
+                                    <p class="fw-7 fs-09 my-3"><span class="gray">Артикул:</span> 1377</p>
+                                    <div class="rating mb-3">
+                                        <div class="rating-bar" style="width: 46%"></div>
+                                    </div>
+                                    <p class="price">570 ₽/шт</p>
+                                    <div class="d-flex mt-3">
+                                        <div class="count-group">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52623H0.5V4.24023H9.5V5.52623Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                            <input type="num" placeholder="0">
+                                            <button type="button">
+                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.5 5.52581H5.643V9.38281H4.357V5.52581H0.5V4.23981H4.357V0.382812H5.643V4.23981H9.5V5.52581Z" fill="currentColor"/>
+                                                </svg>                                                    
+                                            </button>
+                                        </div>
+                                        <button type="button" class="btn-1 ms-2">В корзину</button>
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="accent fw-7 mx-auto">Быстрый заказ</button>
+                                </div>
+                                <ul class="marking">
+                                    <li class="new">Новинка</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev">
+                        <img src="imgs/icons/prev.svg" alt="prev">
+                    </div>
+                    <div class="swiper-button-next">
+                        <img src="imgs/icons/next.svg" alt="next">                      
+                    </div>
+                </div>
+            </section>
+
             <section class="sec-6 mb-8">
                 <div class="row justify-content-between">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <h2>О компании в&nbsp;цифрах</h2>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <ul class="row row-cols-2 gx-5 gy-4">
                             <li>
                                 <div>
@@ -292,7 +1239,7 @@
             <div class="container">
                 <h2><span>Получить видеоинструкцию</span> <br/>по замеру сайдинга</h2>
                 <button type="button" class="btn-1 fs-18 fw-7 mt-5">ПОЛУЧИТЬ</button>
-                <img src="imgs/macbook.jpg" alt="macbook" class="instruction">
+                <img src="imgs/MacBook.png" alt="macbook" class="instruction">
             </div>
         </section>
         
@@ -346,7 +1293,7 @@
             <img src="imgs/bg/bg2.jpg" alt="Контакты" class="sec-9-bg">
             <div class="container">
                 <div class="row justify-content-end">
-                    <div class="col-6">
+                    <div class="d-none col-lg-5 col-xxl-6">
                         <ul class="list-unstyled points-list">
                             <li>
                                 <img src="imgs/icons/point.svg" alt="point">
@@ -354,15 +1301,15 @@
                             </li>
                             <li>
                                 <img src="imgs/icons/point.svg" alt="point">
-                                <div>Доставка за 2-3 дня</div>
+                                <div>Гарантия на материалы 1 год</div>
                             </li>
                             <li>
                                 <img src="imgs/icons/point.svg" alt="point">
-                                <div>Доставка за 2-3 дня</div>
+                                <div>Долговечные и экологичные материалы</div>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-lg-7 col-xxl-6">
                         <form action="">
                             <h5 class="mb-3">Контакты</h5>
                             <h2 class="mb-3">ОСТАВЬТЕ ЗАЯВКУ ДЛЯ расчета стоимости</h2>
@@ -380,8 +1327,8 @@
 
     <footer>
         <div class="container">
-            <div class="row row-cols-4">
-                <div>
+            <div class="row row-cols-4 gy-4">
+                <div class="col-6 col-md-4 col-lg-3">
                     <h3>Каталог товаров</h3>
                     <hr>
                     <ul class="list-unstyled menu">
@@ -393,7 +1340,7 @@
                         <li><a href="">Фасадные Термопанели</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="col-6 col-md-4 col-lg-3">
                     <h3>Помощь</h3>
                     <hr>
                     <ul class="list-unstyled menu">
@@ -402,7 +1349,7 @@
                         <li><a href="">Возврат</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="col-6 col-md-4 col-lg-3">
                     <h3>Мы в соц. сетях</h3>
                     <hr>
                     <ul class="list-unstyled d-flex social">
@@ -412,7 +1359,7 @@
                         <li><a href=""><img src="imgs/icons/telegram.svg" alt="telegram"></a></li>
                     </ul>
                 </div>
-                <div class="d-flex align-items-end">
+                <div class="col-6 col-md-12 col-lg-3 d-flex align-items-end justify-content-end">
                     <div class="contacts">
                         <a class="phone" href="tel:+79005479797">+7 (900) 547-97-97</a>
                         <div class="d-flex">
