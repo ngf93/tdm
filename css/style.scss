@@ -779,6 +779,7 @@ main {
 .sec-6 {
     border-top: 3px solid $accent-color;
     padding-top: 3.6em;
+    overflow: hidden;
     @media (max-width: $bp-xl) {
         padding-top: 2.6em;
     }
@@ -795,7 +796,6 @@ main {
         }
     }
     ul {
-        @include list();
         font-family: $font-2;
         li {
             div {
