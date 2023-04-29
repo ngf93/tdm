@@ -473,10 +473,11 @@ header {
                 @media (max-width: $bp-lg) {
                     min-width: 180px;
                 }
-                 @media (max-width: $bp-sm) {
+                @media (max-width: $bp-sm) {
                     border-bottom: 1px solid #EDEDED;
                     margin-bottom: 1em;
-                 }
+                    font-size: 1.5em;
+                }
             }
             hr {
                 height: 20px;
@@ -487,9 +488,16 @@ header {
                 opacity: 1;
                 @media (max-width: $bp-sm) {
                     display: none;
+                    &+div{width: 100%;}
                 }
             }
-            select {padding-right: 12px;}
+            select {
+                padding-right: 12px;
+                @media (max-width: $bp-sm) {
+                    flex: 1;
+                    font-size: 1.3em;
+                }
+            }
             button {
                 @include flex();
                 margin-left: var(--x);
